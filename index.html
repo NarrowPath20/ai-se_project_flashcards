@@ -47,20 +47,20 @@
     </header>
 
     <main class="page__main-content">
-      <section class="decks" id="home">
-        <h2 class="decks__title">My Decks</h2>
+      <section class="gallery" id="home">
+        <h2 class="gallery__title">My Decks</h2>
 
-        <ul class="decks__list"></ul>
+        <ul class="gallery__list"></ul>
 
         <template id="deck-template">
-          <li class="deck">
-            <a class="deck__link" href="#"></a>
-            <h3 class="deck__title"></h3>
+          <li class="card">
+            <a class="card__link" href="#"></a>
+            <h3 class="card__title"></h3>
 
-            <div class="deck__row">
-              <p class="deck__count"></p>
+            <div class="card__row">
+              <p class="card__count"></p>
               <button
-                class="deck__delete-btn"
+                class="card__delete-btn"
                 type="button"
                 aria-label="Delete deck"
               ></button>
@@ -68,7 +68,7 @@
           </li>
         </template>
 
-        <button class="decks__new-deck-btn" type="button">+ New Deck</button>
+        <button class="gallery__new-card-btn" type="button">+ New Deck</button>
       </section>
 
       <section class="carousel" id="carousel" hidden>
