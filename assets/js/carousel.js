@@ -59,9 +59,12 @@ flipButton.addEventListener("click", () => {
 	updateDisplay();
 });
 
-function renderCarouselView(deck) {
+function renderCarouselView(deck, cardId) {
 	currentDeck = deck;
-	currentIndex = 0;
+	const requestedIndex = deck.cards.findIndex(
+		(card) => String(card.id) === String(cardId),
+	);
+	currentIndex = requestedIndex === -1 ? 0 : requestedIndex;
 	showingQuestion = true;
 	updateDisplay();
 }

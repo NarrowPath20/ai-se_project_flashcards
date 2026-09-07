@@ -71,6 +71,29 @@
         <button class="gallery__new-card-btn" type="button">+ New Deck</button>
       </section>
 
+      <section class="gallery" id="deck" hidden>
+        <h2 class="gallery__title" id="deck-title"></h2>
+
+        <ul class="gallery__list" id="card-list"></ul>
+
+        <template id="card-template">
+          <li class="card">
+            <h3 class="card__title"></h3>
+
+            <div class="card__row">
+              <a class="card__practice-btn" href="#">Practice</a>
+              <button
+                class="card__delete-btn"
+                type="button"
+                aria-label="Delete card"
+              ></button>
+            </div>
+          </li>
+        </template>
+
+        <button class="gallery__new-card-btn" type="button">+ New Card</button>
+      </section>
+
       <section class="carousel" id="carousel" hidden>
         <h2 class="carousel__title"></h2>
 

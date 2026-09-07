@@ -58,6 +58,23 @@
   opacity: 100%;
 }
 
+.card__practice-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  position: relative;
+  z-index: 2;
+  color: inherit;
+  background-color: #ffffff80;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.card__practice-btn:hover {
+  background-image: linear-gradient(#ffffff40, #ffffff40);
+  background-blend-mode: overlay;
+}
+
 .card_color_green {
   background-color: #64d583;
 }
