@@ -1,0 +1,18 @@
+.nav__links {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+}
+
+.nav__link {
+  color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav__link:hover {
+  text-decoration: underline;
+}
