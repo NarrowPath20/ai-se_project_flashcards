@@ -11,6 +11,11 @@ modules, DOM manipulation, and client-side navigation without a framework.
 View the live [Flash Cards application](https://narrowpath20.github.io/ai-se_project_flashcards/)
 on GitHub Pages.
 
+## Project Pitch Video
+
+Check out [this video](https://drive.google.com/file/d/1c0u_8a6olTwjaNTR7K3uIl--MEt930DL/view?usp=sharing),
+where I describe my project and some challenges I faced while building it.
+
 ## Features
 
 - Browse 12 built-in decks containing 120 flashcards about HTML, CSS,
