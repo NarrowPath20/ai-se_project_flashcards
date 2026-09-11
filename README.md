@@ -16,7 +16,7 @@ on GitHub Pages.
 - Browse 12 built-in decks containing 120 flashcards about HTML, CSS,
   JavaScript, browser developer tools, web terminology, and Git.
 - See the number of cards in each deck at a glance.
-- Open a deck to preview its questions before starting a practice session.
+- Open a deck, preview its questions, and choose which question to start with.
 - Move forward or backward through a deck and flip between questions and
   answers.
 - Delete decks or individual cards through a reusable confirmation modal.

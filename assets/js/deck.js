@@ -10,10 +10,12 @@ function createCardElement(cardData, deckData) {
 	const cardFragment = cardTemplate.content.cloneNode(true);
 	const cardElement = cardFragment.querySelector(".card");
 	const cardTitle = cardFragment.querySelector(".card__title");
+	const cardPracticeButton = cardFragment.querySelector(".card__practice-btn");
 	const deleteButton = cardFragment.querySelector(".card__delete-btn");
 
 	cardElement.classList.add(`card_color_${hexToString(deckData.color)}`);
 	cardTitle.textContent = cardData.question;
+	cardPracticeButton.href = `#carousel/${deckData.id}/${cardData.id}`;
 	deleteButton.setAttribute("aria-label", `Delete card: ${cardData.question}`);
 	deleteButton.addEventListener("click", () => {
 		openConfirmationModal(
