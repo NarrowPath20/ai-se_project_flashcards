@@ -1,8 +1,8 @@
 .card {
   box-sizing: border-box;
   width: 100%;
-  max-width: 325px;
-  height: 200px;
+  height: auto;
+  aspect-ratio: 13 / 8;
   padding: 20px;
   border-radius: 20px;
   display: flex;
@@ -10,6 +10,10 @@
   justify-content: space-between;
   position: relative;
   background-color: #64d583;
+  box-shadow:
+    0 2px 8px 0 #0000001a,
+    -1px 2px 2px 0 #ffffffb2 inset,
+    1px -1px 2px 0 #00000040 inset;
 }
 
 .card__link {
@@ -51,28 +55,12 @@
   opacity: 50%;
   position: relative;
   z-index: 2;
+  margin-left: auto;
   cursor: pointer;
 }
 
 .card__delete-btn:hover {
   opacity: 100%;
-}
-
-.card__practice-btn {
-  padding: 8px 12px;
-  border-radius: 8px;
-  position: relative;
-  z-index: 2;
-  color: inherit;
-  background-color: #ffffff80;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.card__practice-btn:hover {
-  background-image: linear-gradient(#ffffff40, #ffffff40);
-  background-blend-mode: overlay;
 }
 
 .card_color_green {

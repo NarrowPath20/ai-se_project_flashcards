@@ -1,0 +1,77 @@
+@media screen and (max-width: 600px) {
+  .page::after {
+    content: "";
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent 0%, #ececec 35%);
+    pointer-events: none;
+  }
+
+  .page_no-mobile-bar::after {
+    display: none;
+  }
+
+  .gallery__new-card-btn,
+  .gallery__practice-btn {
+    position: fixed;
+    bottom: 75px;
+    z-index: 3;
+    height: 44px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: auto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .gallery__new-card-btn {
+    right: 0;
+    left: 0;
+    width: calc(100% - 40px);
+    max-width: 353px;
+    margin: 0 auto;
+  }
+
+  .gallery__practice-btn {
+    right: max(20px, calc(50% - 176.5px));
+    left: auto;
+    width: calc(50% - 26px);
+    max-width: 170.5px;
+  }
+
+  .gallery__new-card-btn_location_deck-view {
+    right: auto;
+    left: max(20px, calc(50% - 176.5px));
+    width: calc(50% - 26px);
+    max-width: 170.5px;
+    margin: 0;
+  }
+
+  .footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
+    box-sizing: border-box;
+    height: 55px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    background-color: #ececec;
+  }
+
+  .page_location_carousel .footer {
+    position: static;
+    height: auto;
+    padding: 0;
+    background-color: transparent;
+  }
+}

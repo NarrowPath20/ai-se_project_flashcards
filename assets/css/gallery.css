@@ -1,14 +1,50 @@
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 325px), 1fr)
+  );
   gap: 20px;
 }
 
 .gallery__title {
+  grid-column: 1 / -1;
   width: 100%;
   margin: 0 0 20px;
   font-size: 40px;
   font-weight: 700;
+}
+
+.gallery__bar {
+  grid-column: 1 / -1;
+  margin: 0 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gallery__bar .gallery__title {
+  margin: 0;
+}
+
+.gallery__practice-btn {
+  height: 44px;
+  padding: 12px 16px 14px;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.gallery__practice-btn:hover {
+  background-color: #333;
 }
 
 .gallery__list {
@@ -21,8 +57,8 @@
 .gallery__new-card-btn {
   box-sizing: border-box;
   width: 100%;
-  max-width: 325px;
-  height: 200px;
+  height: auto;
+  aspect-ratio: 13 / 8;
   padding: 20px;
   border: none;
   border-radius: 20px;
@@ -40,4 +76,20 @@
 .gallery__new-card-btn:hover {
   color: #1a1a1a;
   background-color: #c5c5c5;
+}
+
+@media screen and (max-width: 600px) {
+  .gallery {
+    grid-template-columns: minmax(0, 353px);
+    justify-content: center;
+  }
+
+  .gallery__title {
+    margin-bottom: 12px;
+    font-size: 32px;
+  }
+
+  .gallery__bar {
+    margin-bottom: 12px;
+  }
 }

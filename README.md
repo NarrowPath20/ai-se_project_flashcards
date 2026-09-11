@@ -16,12 +16,15 @@ on GitHub Pages.
 - Browse 12 built-in decks containing 120 flashcards about HTML, CSS,
   JavaScript, browser developer tools, web terminology, and Git.
 - See the number of cards in each deck at a glance.
-- Open a deck and move forward or backward through its cards.
-- Flip each flashcard to switch between its question and answer.
-- Delete decks from the current page.
+- Open a deck to preview its questions before starting a practice session.
+- Move forward or backward through a deck and flip between questions and
+  answers.
+- Delete decks or individual cards through a reusable confirmation modal.
 - Navigate between views with URL hashes and see a not-found view for invalid
   routes or deck IDs.
 - Use accessible controls with descriptive labels and disabled states.
+- Use responsive home, open-deck, and carousel layouts with fixed mobile action
+  controls.
 
 ## Technologies Used
 
@@ -29,7 +32,7 @@ on GitHub Pages.
 - CSS3 and Normalize.css
 - JavaScript (ES modules)
 - DOM APIs and HTML templates
-- CSS Flexbox
+- CSS Grid and Flexbox
 - BEM naming methodology
 - Google Fonts (Inter)
 
@@ -65,7 +68,7 @@ You can also use a local-server extension such as Live Server in VS Code.
 ```text
 .
 |-- assets/
-|   |-- css/        # Page styles
+|   |-- css/        # BEM page styles and responsive mobile action bar
 |   |-- images/     # Interface icons
 |   |-- js/         # Deck data, routing, colors, and carousel behavior
 |   `-- vendor/     # Normalize.css
