@@ -22,6 +22,10 @@
   margin-top: 106px;
 }
 
+.page__main-content > section[hidden] {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
   .page {
     padding-right: 20px;

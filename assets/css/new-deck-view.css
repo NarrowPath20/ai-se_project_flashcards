@@ -1,0 +1,90 @@
+.new-deck-view {
+  max-width: 680px;
+}
+
+.new-deck-view__title {
+  margin: 0 0 40px;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.new-deck-view__form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.new-deck-view__label {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.new-deck-view__textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 280px;
+  padding: 20px;
+  border: 1px solid #a3a3a3;
+  border-radius: 8px;
+  color: inherit;
+  background-color: #fff;
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.new-deck-view__submit-btn {
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  background-color: #1a1a1a;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.new-deck-view__submit-btn:disabled {
+  color: #1a1a1a80;
+  background-color: #d9d9d9;
+  cursor: not-allowed;
+}
+
+.new-deck-view__textarea:hover {
+  border-color: #1a1a1a;
+}
+
+.new-deck-view__submit-btn:hover:not(:disabled) {
+  background-color: #333;
+}
+
+.new-deck-view__textarea:focus,
+.new-deck-view__submit-btn:focus-visible {
+  outline: 3px solid #1a1a1a;
+  outline-offset: 3px;
+}
+
+@media screen and (max-width: 600px) {
+  .new-deck-view {
+    max-width: 353px;
+    margin: 0 auto;
+  }
+
+  .new-deck-view__title {
+    margin-bottom: 32px;
+    font-size: 32px;
+  }
+
+  .new-deck-view__submit-btn {
+    width: 100%;
+  }
+}
