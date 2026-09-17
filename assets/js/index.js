@@ -3,6 +3,7 @@ import { hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck.js";
 import { openConfirmationModal } from "./confirmation-modal.js";
+import { disableSubmitBtn } from "./new-deck-view.js";
 
 const mainContent = document.querySelector(".page__main-content");
 const decksSection = document.querySelector("#home");
@@ -81,6 +82,7 @@ function router() {
 		renderHomeView();
 		renderView(decksSection);
 	} else if (hash === "new-deck" || hash === "new-deck-view") {
+		disableSubmitBtn();
 		renderView(newDeckSection);
 	} else if (hash.startsWith("deck/")) {
 		const [, deckId] = hash.split("/");
