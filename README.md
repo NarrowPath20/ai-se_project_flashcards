@@ -13,7 +13,7 @@ on GitHub Pages.
 
 ## Project Pitch Video
 
-Check out [this video](https://drive.google.com/file/d/1c0u_8a6olTwjaNTR7K3uIl--MEt930DL/view?usp=sharing),
+Check out [this video](https://drive.google.com/file/d/1-PRxmOnqVK0rDIG8LIj6JF8JXJxMtJnv/view?usp=sharing),
 where I describe my project and some challenges I faced while building it.
 
 ## Features
