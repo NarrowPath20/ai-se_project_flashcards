@@ -23,6 +23,7 @@
 }
 
 .card__title {
+  overflow-wrap: anywhere;
   margin: 0;
   font-size: 24px;
   font-weight: 700;
@@ -61,6 +62,25 @@
 
 .card__delete-btn:hover {
   opacity: 100%;
+}
+
+.card__edit-btn {
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+  padding: 0;
+  border: none;
+  background: transparent url("../images/edit.svg") center / contain no-repeat;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.card__edit-btn:hover {
+  opacity: 1;
+}
+
+.card__edit-btn + .card__delete-btn {
+  margin-left: 16px;
 }
 
 .card__practice-btn {

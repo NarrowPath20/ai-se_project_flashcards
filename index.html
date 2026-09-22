@@ -47,7 +47,13 @@
     </header>
 
     <main class="page__main-content">
-      <section class="gallery" id="home">
+      <section class="gallery" id="loading">
+        <h2 class="gallery__title">My Decks</h2>
+        <p class="gallery__status" id="loading-message" role="status">Loading your decks…</p>
+        <button class="gallery__practice-btn" id="retry-load" type="button" hidden>Try again</button>
+      </section>
+
+      <section class="gallery" id="home" hidden>
         <h2 class="gallery__title">My Decks</h2>
 
         <ul class="gallery__list"></ul>
@@ -85,12 +91,33 @@
 
             <div class="card__row">
               <a class="card__practice-btn" href="#">Practice</a>
+              <button class="card__edit-btn" type="button" aria-label="Edit card"></button>
               <button
                 class="card__delete-btn"
                 type="button"
                 aria-label="Delete card"
               ></button>
             </div>
+          </li>
+        </template>
+
+        <template id="card-editor-template">
+          <li class="card card-editor">
+            <form class="card-editor__form" novalidate>
+              <label class="card-editor__side" data-side="question">
+                <span class="card-editor__label">Question</span>
+                <textarea class="card-editor__input" name="question" placeholder="Enter your question" required></textarea>
+              </label>
+              <label class="card-editor__side" data-side="answer" hidden>
+                <span class="card-editor__label">Answer</span>
+                <textarea class="card-editor__input" name="answer" placeholder="Enter your answer" required></textarea>
+              </label>
+              <div class="card-editor__actions">
+                <button class="card-editor__button card-editor__button_type_cancel" type="button" aria-label="Cancel card changes">×</button>
+                <button class="card-editor__button card-editor__button_type_flip" type="button" aria-label="Show answer"></button>
+                <button class="card-editor__button card-editor__button_type_save" type="submit" aria-label="Save card"></button>
+              </div>
+            </form>
           </li>
         </template>
 
@@ -209,6 +236,25 @@
             Create Deck
           </button>
         </form>
+      </section>
+
+      <section class="about" id="about" hidden>
+        <h2 class="about__title">About Flash Cards</h2>
+        <p class="about__text">Build your own study decks and practice one question at a time. Your decks and cards are saved, so you can pick up where you left off.</p>
+        <h3 class="about__heading">Create a deck</h3>
+        <p class="about__text">Choose <a class="about__link" href="#new-deck">New Deck</a>, select a color, and paste your deck as JSON. Give it a name between 2 and 80 characters and include a question and answer for every card. Use an empty cards array to start with a blank deck.</p>
+        <pre class="about__code"><code>{
+  "name": "Web Basics",
+  "cards": [
+    {
+      "question": "What does HTML stand for?",
+      "answer": "HyperText Markup Language"
+    }
+  ]
+}</code></pre>
+        <h3 class="about__heading">Practice and make changes</h3>
+        <p class="about__text">Open a deck and choose Practice. Use the arrows to move between cards and the flip button to reveal an answer.</p>
+        <p class="about__text">Choose New Card to add a question, flip to enter its answer, and select the check mark to save. Use the pencil to edit a card or the trash icon to delete it. Deletions ask for confirmation.</p>
       </section>
 
       <section class="not-found" id="not-found" hidden>

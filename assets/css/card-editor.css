@@ -1,0 +1,82 @@
+.card-editor {
+  min-height: 220px;
+}
+
+.card-editor_side_answer {
+  background-color: #fff;
+}
+
+.card-editor__form,
+.card-editor__side {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  gap: 12px;
+}
+
+.card-editor__label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.card-editor__input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100px;
+  flex: 1;
+  padding: 4px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  resize: vertical;
+}
+
+.card-editor__input::placeholder {
+  color: #1a1a1a80;
+}
+
+.card-editor__actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-editor__button {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  color: inherit;
+  background-color: #ffffff80;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.card-editor__button_type_flip {
+  background-image: url("../images/flip.svg");
+}
+
+.card-editor__button_type_save {
+  background-image: url("../images/check.svg");
+}
+
+.card-editor__button:disabled {
+  opacity: 0.4;
+  cursor: wait;
+}
+
+.card-editor__input:focus-visible,
+.card-editor__button:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+}

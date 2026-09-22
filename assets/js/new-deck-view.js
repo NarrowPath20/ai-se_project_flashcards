@@ -1,27 +1,17 @@
-import { decks } from "./decks.js";
+import { fetchedDecks } from "./decks.js";
+import { addDeck } from "./api.js";
+import { showError } from "./error-modal.js";
 
 const form = document.querySelector("#new-deck-form");
 const submitBtn = form.querySelector(".new-deck-view__submit-btn");
 const textarea = form.querySelector("#deck-json");
-const errorModal = document.querySelector("#error-modal");
-const errorCloseBtn = errorModal.querySelector(".modal__close-btn");
-const errorMessage = errorModal.querySelector(".modal__error");
+textarea.placeholder = JSON.stringify({
+	name: "Deck Name",
+	cards: [{ question: "Question 1", answer: "Answer 1" }],
+}, null, 2);
+let saving = false;
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
-
-/**
- * Converts a string to a lowercase, URL-safe slug.
- *
- * @param {string} str
- * @returns {string}
- */
-function slugify(str) {
-	return str
-		.toLowerCase()
-		.trim()
-		.replace(/[^a-z0-9]+/g, "-")
-		.replace(/^-+|-+$/g, "");
-}
 
 /**
  * Returns a lowercase hex color with a leading "#", defaulting to green.
@@ -36,17 +26,33 @@ function normalizeColor(color) {
 	return "#" + hex.toLowerCase();
 }
 
+/**
+ * Disables creation while saving or when the JSON textarea is empty.
+ * @returns {void}
+ */
 function disableSubmitBtn() {
-	submitBtn.disabled = false;
+	submitBtn.disabled = saving || textarea.value.trim() === "";
 }
 
+textarea.addEventListener("input", disableSubmitBtn);
+
+/**
+ * Validates a deck name after trimming surrounding whitespace.
+ * @param {*} name - The name read from parsed JSON.
+ * @returns {string|null} A valid trimmed name, or null.
+ */
 function validateName(name) {
-	if (typeof name !== "string" || name.length < 2 || name.length > 80) {
+	if (typeof name !== "string" || name.trim().length < 2 || name.trim().length > 80) {
 		return null;
 	}
-	return name;
+	return name.trim();
 }
 
+/**
+ * Parses deck JSON without allowing a syntax error to escape the form handler.
+ * @param {string} jsonString - The text to parse.
+ * @returns {*} The parsed JSON value, or null if parsing fails.
+ */
 function parseJSON(jsonString) {
 	try {
 		return JSON.parse(jsonString);
@@ -55,31 +61,9 @@ function parseJSON(jsonString) {
 	}
 }
 
-function showError(message) {
-	errorMessage.textContent = message;
-	errorModal.classList.add("modal_visible");
-	errorCloseBtn.focus();
-}
-
-function closeError() {
-	errorModal.classList.remove("modal_visible");
-	textarea.focus();
-}
-
-errorCloseBtn.addEventListener("click", closeError);
-
-errorModal.addEventListener("keydown", (e) => {
-	if (e.key === "Escape") {
-		closeError();
-	} else if (e.key === "Tab") {
-		// Dismiss is the only focusable control in this modal.
-		e.preventDefault();
-		errorCloseBtn.focus();
-	}
-});
-
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
+	if (saving) return;
 
 	const formData = Object.fromEntries(new FormData(form));
 	const jsonData = parseJSON(formData[textarea.name]);
@@ -109,6 +93,14 @@ form.addEventListener("submit", (e) => {
 		);
 		return;
 	}
+	if (jsonData.cards.some((card) =>
+		!card || typeof card !== "object" || Array.isArray(card) ||
+		typeof card.question !== "string" || !card.question.trim() ||
+		typeof card.answer !== "string" || !card.answer.trim()
+	)) {
+		showError('Every card must have nonempty "question" and "answer" strings.');
+		return;
+	}
 
 	const colorValue = normalizeColor(formData.color);
 	if (
@@ -121,16 +113,28 @@ form.addEventListener("submit", (e) => {
 		return;
 	}
 
-	const id = `${slugify(name)}-${Date.now()}`;
-
-	decks.push({
-		id,
-		color: colorValue,
-		name,
-		cards: jsonData.cards,
-	});
-
-	window.location.hash = "deck/" + id;
+	saving = true;
+	Array.from(form.elements).forEach((element) => { element.disabled = true; });
+	submitBtn.textContent = "Creating…";
+	addDeck({ name, color: colorValue, cards: jsonData.cards })
+		.then((newDeck) => {
+			fetchedDecks.push(newDeck);
+			form.reset();
+			if (["#new-deck", "#new-deck-view"].includes(window.location.hash)) {
+				window.location.hash = "deck/" + newDeck._id;
+			} else {
+				window.dispatchEvent(new Event("hashchange"));
+			}
+		})
+		.catch(() => {
+			showError("Unable to save your deck. Check your connection and try again. Your input has been kept.");
+		})
+		.finally(() => {
+			saving = false;
+			Array.from(form.elements).forEach((element) => { element.disabled = false; });
+			submitBtn.textContent = "Create Deck";
+			disableSubmitBtn();
+		});
 });
 
 export { disableSubmitBtn };
